@@ -1,77 +1,78 @@
 # 木铎知会
 
-标准说明文件
-目录
-背景
-安装
-用途
-发生器
-徽章
-示例 READMEs
-相关努力
-维护者
-贡献
-撰稿人
-许可
+# 项目名称（如：ReqFlow AI - 需求自动确认生成器）
 
-组织沟通与知识沉淀平台。本项目已从静态前端原型升级为本地可运行的 Node 全栈 MVP，核心能力是把会议录音、文档、截图和业务资料自动编译成项目内 LLM Wiki，并生成待确认需求、决策、风险和变更记录。
+## 目录
+- [项目简介](#项目简介)
+- [核心功能](#核心功能)
+- [技术栈](#技术栈)
+- [快速开始](#快速开始)
+  - [前提条件](#前提条件)
+  - [使用 Docker 部署](#使用-docker-部署)
+  - [本地开发运行](#本地开发运行)
+- [环境变量配置](#环境变量配置)
+- [数据库模型](#数据库模型)
+- [使用指南](#使用指南)
+- [AI 提示词策略](#ai-提示词策略)
+- [项目文件结构](#项目文件结构)
+- [参与贡献](#参与贡献)
+- [开源协议](#开源协议)
+- [联系方式与社区](#联系方式与社区)
 
-## 启动
+## 项目简介
 
-```bash
-npm install
-npm run dev
-```
+（请填写：项目是什么、解决什么问题、主要特点）
 
-- 前端：http://localhost:5173
-- API：http://localhost:4000/api/health
+## 核心功能
 
-如需真实 OpenAI 编译能力，复制 `.env.example` 为 `.env`，填写 `OPENAI_API_KEY`。
-未配置 Key 时，系统会使用本地启发式编译器跑通完整流程。
+（请填写：支持上传格式、AI 提取内容、输出格式、冲突检测等）
 
-## 商业化部署底座
+## 技术栈
 
-当前代码保留本地 JSON 开发模式，同时已加入生产化边界：
+（请填写：前端、后端、数据库、AI 模型/API、部署方式等）
 
-- PostgreSQL schema：`prisma/schema.prisma`
-- JSON 迁移脚本：`npm run migrate:json`
-- 阿里云 OSS 存储抽象：`STORAGE_PROVIDER=oss`
-- BullMQ/Redis 异步任务队列：`JOB_QUEUE_PROVIDER=bullmq`
-- API/Worker 拆分：`npm start` 与 `npm run start:worker`
-- Docker Compose：PostgreSQL、Redis、API、Worker
+## 快速开始
 
-生产环境必须配置：
+### 前提条件
 
-```bash
-NODE_ENV=production
-SESSION_SECRET=足够长的随机字符串
-DATABASE_URL=postgresql://...
-REDIS_URL=redis://...
-JOB_QUEUE_PROVIDER=bullmq
-STORAGE_PROVIDER=oss
-ALI_OSS_REGION=oss-cn-hangzhou
-ALI_OSS_BUCKET=你的私有 Bucket
-ALI_OSS_ACCESS_KEY_ID=...
-ALI_OSS_ACCESS_KEY_SECRET=...
-```
+（请填写：需要安装 Docker / Node.js / 数据库等）
 
-OSS Bucket 应设置为私有读写；前端预览和下载通过后端鉴权后生成短期签名 URL。
+### 使用 Docker 部署
 
-## 已实现
+（请填写：docker-compose 命令、访问地址）
 
-- 项目看板 API 化：指标、趋势、状态、最近变更、来源资料均来自后端。
-- 资料上传：支持文本、Markdown、PDF、Word、Excel、图片、音频等入口。
-- 自动编译：解析资料后更新 Wiki 页面版本，并生成变更、决策、风险、待确认事项。
-- 变更策略：AI 只生成待确认变更；确认后才写入当前需求池和需求历史版本。
-- 项目 Wiki：支持页面列表、详情查看、来源数量、版本记录数据模型。
-- Markdown 导出：一键生成 Obsidian 可打开的 `index.md`、`log.md`、`changes.md`、`sources.md` 和 wiki 页面。
-- Prisma schema：提供 PostgreSQL 生产数据模型边界。
+### 本地开发运行
 
-## 验证
+（请填写：git clone、安装依赖、配置 env、运行命令等）
 
-```bash
-npm run build
-npm run prisma:validate
-npm run dev:server
-npm run smoke
-```
+## 环境变量配置
+
+（请填写：`DATABASE_URL`、`OPENAI_API_KEY` 等示例）
+
+## 数据库模型
+
+（请填写：Prisma 主要模型说明，如 Conversation、Requirement 的字段）
+
+## 使用指南
+
+（请填写：上传沟通记录 → 点击生成 → 输出待确认需求清单 → 人工编辑导出 的步骤，可配图说明）
+
+## AI 提示词策略
+
+（请填写：提示词设计思路、输出 JSON Schema 示例、如何处理冲突和模糊点）
+
+## 项目文件结构
+
+（请填写：关键目录与文件的作用，如 `server/`、`src/`、`prisma/` 等）
+
+## 参与贡献
+
+（请填写：如何提 Issue、Fork、PR 流程，贡献方向）
+
+## 开源协议
+
+（请填写：MIT / Apache 2.0 等）
+
+## 联系方式与社区
+
+（请填写：GitHub Issues 链接、微信群 / Discord、作者信息等）
