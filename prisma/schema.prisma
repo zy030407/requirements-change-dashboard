@@ -1,0 +1,492 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Tenant {
+  id          String   @id
+  name        String
+  status      String   @default("active")
+  settings    Json?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  users       User[]
+  projects    Project[]
+  auditLogs   AuditLog[]
+  modelUsages ModelUsage[]
+}
+
+model User {
+  id           String          @id
+  tenantId     String
+  name         String
+  account      String
+  passwordHash String
+  passwordSalt String
+  phone        String          @default("")
+  email        String          @default("")
+  role         String
+  systemRole   String
+  status       String          @default("active")
+  createdAt    DateTime        @default(now())
+  updatedAt    DateTime        @updatedAt
+  tenant       Tenant          @relation(fields: [tenantId], references: [id])
+  sessions     Session[]
+  members      ProjectMember[]
+
+  @@unique([tenantId, account])
+  @@index([tenantId, systemRole])
+}
+
+model Session {
+  id        String   @id
+  userId    String
+  tokenHash String   @unique
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([expiresAt])
+}
+
+model Project {
+  id              String           @id
+  tenantId        String
+  name            String
+  customerName    String
+  stage           String
+  ownerId         String?
+  startDate       DateTime?
+  expectedEndDate DateTime?
+  status          String           @default("active")
+  settings        Json?
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+  tenant          Tenant           @relation(fields: [tenantId], references: [id])
+  members         ProjectMember[]
+  sourceFiles     SourceFile[]
+  ingestJobs      IngestJob[]
+  transcripts     Transcript[]
+  wikiPages       WikiPage[]
+  wikiVersions    WikiPageVersion[]
+  evidences       SourceEvidence[]
+  requirements    Requirement[]
+  reqVersions     RequirementVersion[]
+  changes         Change[]
+  confirmations   ChangeConfirmation[]
+  decisions       Decision[]
+  risks           Risk[]
+  openQuestions   OpenQuestion[]
+  communications  Communication[]
+  exports         MarkdownExport[]
+  auditLogs       AuditLog[]
+  modelUsages     ModelUsage[]
+
+  @@index([tenantId, updatedAt])
+  @@index([ownerId])
+}
+
+model ProjectMember {
+  id                String   @id
+  tenantId          String
+  projectId         String
+  userId            String
+  role              String
+  memberType        String
+  isPrimaryManager  Boolean  @default(false)
+  canConfirmChanges Boolean  @default(false)
+  permissions       String[]
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  project           Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  user              User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([projectId, userId])
+  @@index([tenantId, memberType])
+}
+
+model SourceFile {
+  id                         String           @id
+  tenantId                   String
+  projectId                  String
+  title                      String
+  originalName               String
+  fileName                   String
+  mimeType                   String
+  category                   String
+  documentStage              String           @default("需求确认阶段")
+  documentPurpose            String           @default("通用资料")
+  size                       Int
+  path                       String
+  storageProvider            String           @default("local")
+  bucket                     String?
+  objectKey                  String?
+  etag                       String?
+  contentHash                String?
+  storageRegion              String?
+  previewUrlExpiresAt        DateTime?
+  speakerCount               Int?
+  enableSpeakerDiarization   Boolean          @default(false)
+  asrOptions                 Json?
+  note                       String           @default("")
+  parsedText                 String           @default("")
+  aiSummary                  String           @default("")
+  status                     String
+  uploadedBy                 String
+  uploadedAt                 DateTime         @default(now())
+  updatedAt                  DateTime         @updatedAt
+  project                    Project          @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  jobs                       IngestJob[]
+  transcripts                Transcript[]
+  changes                    Change[]
+  decisions                  Decision[]
+  risks                      Risk[]
+  questions                  OpenQuestion[]
+  evidences                  SourceEvidence[]
+
+  @@index([tenantId, projectId, uploadedAt])
+  @@index([projectId, status])
+  @@index([objectKey])
+}
+
+model IngestJob {
+  id            String     @id
+  tenantId      String
+  projectId     String
+  sourceFileId  String
+  status        String
+  step          String
+  progress      Int        @default(0)
+  error         String?
+  resultSummary Json?
+  attempts      Int        @default(0)
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
+  project       Project    @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  sourceFile    SourceFile @relation(fields: [sourceFileId], references: [id], onDelete: Cascade)
+
+  @@index([tenantId, projectId, status])
+  @@index([sourceFileId])
+}
+
+model Transcript {
+  id           String     @id
+  tenantId     String
+  projectId    String
+  sourceFileId String
+  text         String
+  createdAt    DateTime   @default(now())
+  project      Project    @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  sourceFile   SourceFile @relation(fields: [sourceFileId], references: [id], onDelete: Cascade)
+
+  @@index([tenantId, projectId, createdAt])
+}
+
+model WikiPage {
+  id        String            @id
+  tenantId  String
+  projectId String
+  type      String
+  title     String
+  slug      String
+  summary   String
+  content   String
+  tags      String[]
+  sourceIds String[]
+  createdAt DateTime          @default(now())
+  updatedAt DateTime          @updatedAt
+  project   Project           @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  versions  WikiPageVersion[]
+
+  @@unique([projectId, slug])
+  @@index([tenantId, projectId, updatedAt])
+}
+
+model WikiPageVersion {
+  id           String   @id
+  tenantId     String
+  wikiPageId   String
+  projectId    String
+  version      Int
+  title        String
+  summary      String
+  content      String
+  sourceFileId String?
+  changeReason String
+  createdBy    String
+  createdAt    DateTime @default(now())
+  project      Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  wikiPage     WikiPage @relation(fields: [wikiPageId], references: [id], onDelete: Cascade)
+
+  @@index([wikiPageId, version])
+}
+
+model WikiLink {
+  id         String   @id
+  tenantId   String
+  projectId  String
+  fromPageId String
+  toPageId   String
+  label      String?
+  createdAt  DateTime @default(now())
+
+  @@index([tenantId, projectId])
+}
+
+model SourceEvidence {
+  id           String     @id
+  tenantId     String
+  projectId    String
+  sourceFileId String
+  entityType   String
+  entityId     String
+  quote        String
+  location     String?
+  createdAt    DateTime   @default(now())
+  project      Project    @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  sourceFile   SourceFile @relation(fields: [sourceFileId], references: [id], onDelete: Cascade)
+
+  @@index([entityType, entityId])
+}
+
+model Requirement {
+  id                 String               @id
+  tenantId           String
+  projectId          String
+  moduleName         String
+  title              String
+  description        String
+  acceptanceCriteria String
+  status             String
+  priority           String
+  proposer           String
+  owner              String
+  sourceIds          String[]
+  createdAt          DateTime             @default(now())
+  updatedAt          DateTime             @updatedAt
+  project            Project              @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  versions           RequirementVersion[]
+  changes            Change[]
+
+  @@index([tenantId, projectId, status])
+  @@index([projectId, moduleName])
+}
+
+model RequirementVersion {
+  id                 String      @id
+  tenantId           String
+  requirementId      String
+  projectId          String
+  version            Int
+  description        String
+  acceptanceCriteria String
+  sourceChangeId     String?
+  createdBy          String
+  createdAt          DateTime    @default(now())
+  project            Project     @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  requirement        Requirement @relation(fields: [requirementId], references: [id], onDelete: Cascade)
+
+  @@index([requirementId, version])
+}
+
+model Change {
+  id            String               @id
+  tenantId      String
+  projectId     String
+  requirementId String?
+  changeType    String
+  moduleName    String
+  title         String
+  beforeContent String
+  afterContent  String
+  summary       String
+  impactScope   String
+  sourceFileId  String?
+  proposer      String
+  confidence    Float
+  status        String
+  createdAt     DateTime             @default(now())
+  updatedAt     DateTime             @updatedAt
+  project       Project              @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  requirement   Requirement?         @relation(fields: [requirementId], references: [id])
+  sourceFile    SourceFile?          @relation(fields: [sourceFileId], references: [id])
+  confirmations ChangeConfirmation[]
+
+  @@index([tenantId, projectId, status])
+  @@index([sourceFileId])
+}
+
+model ChangeConfirmation {
+  id        String   @id
+  tenantId  String
+  changeId  String
+  projectId String
+  actorId   String
+  actorName String
+  action    String
+  comment   String   @default("")
+  createdAt DateTime @default(now())
+  project   Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  change    Change   @relation(fields: [changeId], references: [id], onDelete: Cascade)
+
+  @@index([tenantId, projectId, createdAt])
+  @@index([changeId])
+}
+
+model Decision {
+  id           String      @id
+  tenantId     String
+  projectId    String
+  sourceFileId String?
+  title        String
+  summary      String
+  status       String
+  createdAt    DateTime    @default(now())
+  project      Project     @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  sourceFile   SourceFile? @relation(fields: [sourceFileId], references: [id])
+
+  @@index([tenantId, projectId, createdAt])
+}
+
+model Risk {
+  id           String      @id
+  tenantId     String
+  projectId    String
+  sourceFileId String?
+  title        String
+  summary      String
+  severity     String
+  status       String
+  createdAt    DateTime    @default(now())
+  project      Project     @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  sourceFile   SourceFile? @relation(fields: [sourceFileId], references: [id])
+
+  @@index([tenantId, projectId, severity])
+}
+
+model OpenQuestion {
+  id           String      @id
+  tenantId     String
+  projectId    String
+  sourceFileId String?
+  title        String
+  summary      String
+  owner        String
+  status       String
+  createdAt    DateTime    @default(now())
+  project      Project     @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  sourceFile   SourceFile? @relation(fields: [sourceFileId], references: [id])
+
+  @@index([tenantId, projectId, status])
+}
+
+model Communication {
+  id                 String   @id
+  tenantId           String
+  projectId          String
+  title              String
+  type               String
+  participants       String[]
+  sourceFileId       String?
+  summary            String
+  relatedChangeCount Int      @default(0)
+  meetingTime        DateTime?
+  createdBy          String
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+  project            Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  @@index([tenantId, projectId, meetingTime])
+}
+
+model MarkdownExport {
+  id        String   @id
+  tenantId  String
+  projectId String
+  path      String
+  pageCount Int
+  createdAt DateTime @default(now())
+  project   Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  @@index([tenantId, projectId, createdAt])
+}
+
+model AuditLog {
+  id         String   @id
+  tenantId   String?
+  projectId  String?
+  actorId    String?
+  actorName  String?
+  actor      String
+  action     String
+  targetType String
+  targetId   String
+  before     Json?
+  after      Json?
+  detail     String
+  createdAt  DateTime @default(now())
+  tenant     Tenant?  @relation(fields: [tenantId], references: [id])
+  project    Project? @relation(fields: [projectId], references: [id])
+
+  @@index([tenantId, createdAt])
+  @@index([projectId, createdAt])
+}
+
+model ModelAdapter {
+  id             String       @id
+  tenantId       String?
+  name           String
+  provider       String
+  capability     String
+  protocol       String
+  model          String?
+  baseUrl        String?
+  appKey         String?
+  apiKey         String?
+  envVarName     String?
+  status         String
+  description    String?
+  timeoutSeconds Int?
+  lastTest       Json?
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+  usages         ModelUsage[]
+
+  @@index([tenantId, capability, status])
+}
+
+model ModelPipeline {
+  id         String   @id
+  tenantId   String?
+  capability String
+  adapterId  String?
+  updatedAt  DateTime @updatedAt
+
+  @@unique([tenantId, capability])
+}
+
+model ModelUsage {
+  id             String        @id
+  tenantId       String
+  projectId      String?
+  adapterId      String?
+  capability     String
+  status         String
+  promptTokens   Int           @default(0)
+  completionTokens Int         @default(0)
+  audioSeconds   Int           @default(0)
+  costCents      Int           @default(0)
+  latencyMs      Int           @default(0)
+  error          String?
+  createdAt      DateTime      @default(now())
+  tenant         Tenant        @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  project        Project?      @relation(fields: [projectId], references: [id])
+  adapter        ModelAdapter? @relation(fields: [adapterId], references: [id])
+
+  @@index([tenantId, createdAt])
+  @@index([projectId, createdAt])
+}

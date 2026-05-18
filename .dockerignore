@@ -1,0 +1,13 @@
+node_modules
+dist
+data
+uploads
+exports
+redis
+.env
+.env.*
+!.env.example
+.DS_Store
+._*
+npm-debug.log
+*.log
