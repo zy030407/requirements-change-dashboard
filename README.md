@@ -21,7 +21,9 @@
 
 ## Project-Overview
 
- A platform that integrates "organizational communication" and "knowledge accumulation", its core function is to automatically compile information sources such as meeting recordings, documents, screenshots, and business materials into an LLM Wiki within the project, and automatically generate requirements, decisions, and accompanying risks that need confirmation. Based on the subsequent project progress, requirements changes that need confirmation will also be continuously generated.
+This platform is an AI knowledge collaboration and requirements management platform for project teams, which can automatically parse multi-source data such as meeting recordings, documents, screenshots, tables, pictures, and audios into project wiKs, and intelligently generate requirements, decisions, risks and change tips. All AI-generated content requires manual confirmation before entering the formal demand pool, which not only improves the efficiency of project management, but also ensures that key decisions are controllable and traceable.
+
+The platform is suitable for scenarios such as software development, digital projects, product requirements management, enterprise knowledge base, consulting and delivery, bidding scheme preparation, R&D knowledge precipitation and cross-department collaboration, helping organizations to transform daily communication and project data into reusable, traceable and deliverable knowledge assets
 <img width="958" height="507" alt="image" src="https://github.com/user-attachments/assets/fc1f186b-dd4f-4c67-81be-9eafbcd39066" />
 
 
