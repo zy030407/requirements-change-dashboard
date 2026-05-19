@@ -1,7 +1,7 @@
-# 木铎知会
+# Notice from the Wooden Bell
 
-## 目录
-- [项目简介](#项目简介)
+## catalogue
+- [Project Overview](#Project Overview)
 - [核心功能](#核心功能)
 - [技术栈](#技术栈)
 - [快速开始](#快速开始)
@@ -13,7 +13,7 @@
 - [开源协议](#开源协议)
 
 
-## 项目简介
+## Project Overview
 
    一款结合“组织沟通”与”知识沉淀”的平台,核心功能是把会议录音、文档、截图和业务资料等信息源自动编译成项目内 LLM Wiki，并自动生成待确认的需求、决策以及伴随的风险。根据后续项目进程也会不断生成待确认的需求变更。
 <img width="958" height="507" alt="image" src="https://github.com/user-attachments/assets/fc1f186b-dd4f-4c67-81be-9eafbcd39066" />
