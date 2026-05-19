@@ -76,7 +76,7 @@ npm run dev
 
 ## 环境变量设置
 
-# 开发环境
+### 开发环境
 
 复制 .env.example 为 .env，至少配置
 
@@ -84,7 +84,7 @@ npm run dev
 OPENAI_API_KEY=your key
 ```
 
-# 生产环境
+### 生产环境
 
 ```bash
 NODE_ENV=production
@@ -124,7 +124,7 @@ Prisma schema 定义在 prisma/schema.prisma，支持 PostgreSQL 生产环境。
 
 ## 开源协议
 
-（请填写：MIT / Apache 2.0 等）
+Apache 2.0 
 
 ## 验证
 
