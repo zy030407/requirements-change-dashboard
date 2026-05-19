@@ -63,7 +63,35 @@ flowchart LR
 
 ## Core-Strengths
 
+### Unified management of multi-source data
+The platform supports the upload of text, Markdown, PDF, Word, Excel, pictures, screenshots, audio, conference recordings and other data, which can gather project information scattered in different channels to form a complete project database.
 
+### Automatically generate project wikis
+The system can automatically parse and upload the data, and generate the project-specific Wiki page, the project background, business requirements, function description, decision records, risk tips and other content structured precipitation, improve the efficiency of knowledge management.
+
+### Extract key information intelligently
+The platform can automatically identify requirements, decisions, risks, change points and items to be confirmed from meetings, documents and business data, reducing manual sorting costs and reducing the risk of information omission.
+
+### Controllable management of requirements change
+AI only generates requirements and changes to be confirmed, and all content must be manually confirmed before it is officially written into the requirements pool and history version to ensure that the project change process is safe and controllable.
+
+### The whole process can be traced
+The platform keeps a complete record of sources, Wiki versions, requirements changes, decision making processes, and risk alerts, making every update in the project documented for easy review and accountability tracking.
+
+### The project kanban board is updated in real time
+The project Kanban board data are all from the real data of the backend, which can display the project status, demand changes, risk situation, recent updates and source information in real time, and help managers quickly grasp the project progress.
+
+### Support the continuous precipitation of knowledge
+With the continuous uploading of project information, the system will continuously update the Wiki pages and version records, so that project knowledge can be continuously accumulated and improved with the advancement of business.
+
+### Easy to archive and reuse
+The platform supports one-click export of Obsidian Markdown files that can be opened directly, which facilitates local archiving, secondary editing, knowledge reuse and achievement delivery of teams.
+
+### Suitable for enterprise deployment
+The system uses Prisma + PostgreSQL to build a production-level database model, which can support long-term management of core data such as projects, materials, requirements, changes, risks, decisions and versions.
+
+### Improve organizational collaboration efficiency
+The platform transforms meeting communication, business documents and project data into manageable, traceable and reusable knowledge assets, which helps teams reduce repeated communication, improve collaboration efficiency and project delivery quality.
 ## Application-scenarios
 ## Technical-stack
 
