@@ -12,13 +12,12 @@
 - [参与贡献](#参与贡献)
 - [开源协议](#开源协议)
 
+
 ## 项目简介
 
   一款结合“组织沟通”与”知识沉淀”的平台,核心功能是把会议录音、文档、截图和业务资料等信息源自动编译成项目内 LLM Wiki，并自动生成待确认的需求、决策以及伴随的风险。根据后续项目进程也会不断生成待确
-  
   认的需求变更。
 <img width="958" height="507" alt="image" src="https://github.com/user-attachments/assets/fc1f186b-dd4f-4c67-81be-9eafbcd39066" />
-
 
 
 ## 核心功能
@@ -54,9 +53,11 @@ flowchart LR
 
 - **生产级数据库模型**：使用 Prisma + PostgreSQL 定义并管理完整的数据结构，适合生产环境部署。
 
+
 ## 技术栈
 
 （请填写：前端、后端、数据库、AI 模型/API、部署方式等）
+
 
 ## 快速开始
 
@@ -101,11 +102,13 @@ ALI_OSS_ACCESS_KEY_SECRET=...
 
 OSS Bucket 应设置为私有读写；前端预览和下载通过后端鉴权后生成短期签名 URL。
 
+
 ## 数据库模型
 
 Prisma schema 定义在 prisma/schema.prisma，支持 PostgreSQL 生产环境。
 
 本地开发可使用 JSON 模式：npm run migrate:json
+
 
 ## 商业化部署底座
 
@@ -118,13 +121,16 @@ Prisma schema 定义在 prisma/schema.prisma，支持 PostgreSQL 生产环境。
 - **进程拆分**：API 与 Worker 分离 → `npm start` 与 `npm run start:worker`
 - **容器编排**：Docker Compose 集成 → PostgreSQL、Redis、API、Worker
 
+
 ## 参与贡献
 
 （请填写：如何提 Issue、Fork、PR 流程，贡献方向）
 
+
 ## 开源协议
 
 Apache 2.0 
+
 
 ## 验证
 
