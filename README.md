@@ -7,6 +7,8 @@
 ## catalogue
 - [Project Overview](#project-overview)
 - [Core function](#Core-function)
+- [Core function](#Core-function)
+- [Core function](#Core-function)
 - [Technical stack](#Technical-stack)
 - [Quick Start](#Quick-start)
 - [Environment Variable Configuration](#Environment-Variable-Configuration)
