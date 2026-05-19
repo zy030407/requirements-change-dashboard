@@ -52,13 +52,15 @@ flowchart LR
 
 ## 快速开始
 
+```bash
 npm install
-
 npm run dev
+```
 
 - **前端**：http://localhost:5173
 
 - **API**：http://localhost:4000/api/health
+
 如需完整的 OpenAI 编译能力，请复制 .env.example 为 .env，填写 OPENAI_API_KEY。
 
 补充：未配置 Key 时，系统会使用本地启发式编译器跑通完整流程。
