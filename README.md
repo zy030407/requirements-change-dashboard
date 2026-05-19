@@ -92,7 +92,41 @@ The system uses Prisma + PostgreSQL to build a production-level database model, 
 
 ### Improve organizational collaboration efficiency
 The platform transforms meeting communication, business documents and project data into manageable, traceable and reusable knowledge assets, which helps teams reduce repeated communication, improve collaboration efficiency and project delivery quality.
+
+
 ## Application-scenarios
+
+### Software Development Project Management
+This solution is applicable to software development, system integration, platform construction, and other projects. It can automatically organize various materials such as requirement documents, meeting recordings, prototype screenshots, and technical plans into a project Wiki, helping the team to uniformly manage requirements, changes, decisions, and risks. 
+
+### Product Requirements Management
+This solution is suitable for product managers to manage the requirements pool, plan versions, and organize user feedback. The platform can automatically identify new requirements, changes in requirements, and items awaiting confirmation, thereby reducing the cost of manual organization and improving the efficiency of requirements management. 
+
+### Enterprise Knowledge Base Construction
+This solution is suitable for the accumulation of internal knowledge within enterprises. It integrates and manages system documents, training materials, business processes, meeting minutes, and project documents, creating a sustainable and updatable enterprise knowledge base that is traceable. 
+
+### Meeting Minutes and Decision Tracking
+Applicable to project meetings, requirement review meetings, customer communication meetings, and management meetings. The platform can automatically extract key decisions, risk warnings, and subsequent tasks from meeting recordings and meeting materials. 
+
+### Digital Transformation Project
+Suitable for enterprise digital platform construction, business system upgrades and process optimization projects, this helps teams document business requirements, technical solutions, implementation processes and change records, ensuring the smooth progress of the projects. 
+
+### Consultation and Delivery Projects
+Suitable for management consulting, industry research, solution planning and customer delivery projects. The platform can consolidate interview records, research materials, solution documents and meeting contents into a project Wiki, facilitating project archiving and reusing of results. 
+
+### Bidding and Proposal Preparation
+Applicable to bidding documents, project application forms, project initiation reports and construction proposal preparation. The platform can uniformly organize policy documents, customer demands, budget tables and historical data, thereby improving the efficiency of proposal writing. 
+
+### Research and development knowledge accumulation
+This technology solution is applicable to the management of technical plans, interface documents, test reports, screenshot records of issues, and version change records for the R&D team. It helps the team build a complete technical knowledge asset, facilitating subsequent maintenance and personnel handover. 
+
+### Cross-departmental collaborative management
+This approach is applicable to projects involving business, product, technology, operation and management teams. The platform reduces information transmission errors through a unified project Wiki and dashboard, and enhances cross-departmental communication efficiency. 
+
+### Project Review and Result Archiving
+This is applicable for the data organization, process review and result archiving after the project is completed. The platform can fully retain the source of the data, changes in requirements, decision-making records and risk processes, providing reference for subsequent projects.
+
+
 ## Technical-stack
 
 - **Frontend Framework**：React 19
