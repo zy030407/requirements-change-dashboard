@@ -7,8 +7,8 @@
 ## catalogue
 - [Project Overview](#project-overview)
 - [Core function](#Core-function)
-- [Core function](#Core-function)
-- [Core function](#Core-function)
+- [Core Strengths](#Core-Strengths)
+- [Application scenarios](#Application-scenarios)
 - [Technical stack](#Technical-stack)
 - [Quick Start](#Quick-start)
 - [Environment Variable Configuration](#Environment-Variable-Configuration)
@@ -59,6 +59,10 @@ flowchart LR
 - **Production-Grade Database Model**: Uses Prisma + PostgreSQL to define and manage a complete data structure, suitable for production deployment.
 
 
+## Core-Strengths
+
+
+## Application-scenarios
 ## Technical-stack
 
 - **Frontend Framework**：React 19
