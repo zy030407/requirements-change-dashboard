@@ -76,7 +76,7 @@ npm run dev
 
 ## 环境变量设置
 
-#开发环境
+# 开发环境
 
 复制 .env.example 为 .env，至少配置
 
@@ -84,7 +84,7 @@ npm run dev
 OPENAI_API_KEY=your key
 ```
 
-#生产环境
+# 生产环境
 
 ```bash
 NODE_ENV=production
@@ -107,21 +107,16 @@ Prisma schema 定义在 prisma/schema.prisma，支持 PostgreSQL 生产环境。
 
 本地开发可使用 JSON 模式：npm run migrate:json
 
-商业化部署底座
+## 商业化部署底座
 
 当前代码保留本地 JSON 开发模式，同时已加入生产化边界：
 
-PostgreSQL schema：prisma/schema.prisma
-
-JSON 迁移脚本：npm run migrate:json
-
-阿里云 OSS 存储抽象：STORAGE_PROVIDER=oss
-
-BullMQ/Redis 异步任务队列：JOB_QUEUE_PROVIDER=bullmq
-
-API/Worker 拆分：npm start 与 npm run start:worker
-
-Docker Compose：PostgreSQL、Redis、API、Worker
+- **数据库**：PostgreSQL schema → `prisma/schema.prisma`
+- **本地开发备选**：JSON 迁移脚本 → `npm run migrate:json`
+- **对象存储**：阿里云 OSS 抽象 → `STORAGE_PROVIDER=oss`
+- **异步队列**：BullMQ + Redis → `JOB_QUEUE_PROVIDER=bullmq`
+- **进程拆分**：API 与 Worker 分离 → `npm start` 与 `npm run start:worker`
+- **容器编排**：Docker Compose 集成 → PostgreSQL、Redis、API、Worker
 
 ## 参与贡献
 
@@ -131,6 +126,11 @@ Docker Compose：PostgreSQL、Redis、API、Worker
 
 （请填写：MIT / Apache 2.0 等）
 
-## 联系方式与社区
+## 验证
 
-（请填写：GitHub Issues 链接、微信群 / Discord、作者信息等）
+```bash
+npm run build
+npm run prisma:validate
+npm run dev:server
+npm run smoke
+```
