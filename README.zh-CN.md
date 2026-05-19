@@ -13,7 +13,7 @@
 - [数据库模型](#数据库模型)
 - [商业化部署底座](#商业化部署底座)
 - [验证](#验证)
-- [参与贡献](#参与贡献)
+- [主体公司](#主体公司)
 - [开源协议](#开源协议)
 
 
@@ -155,16 +155,6 @@ Prisma schema 定义在 prisma/schema.prisma，支持 PostgreSQL 生产环境。
 - **容器编排**：Docker Compose 集成 → PostgreSQL、Redis、API、Worker
 
 
-## 设计公司
-
-Xi'an Chaoye Yangchuang Information Technology Co., Ltd.
-
-
-## 开源协议
-
-Apache 2.0 
-
-
 ## 验证
 
 ```bash
@@ -173,3 +163,13 @@ npm run prisma:validate
 npm run dev:server
 npm run smoke
 ```
+
+
+## 主体公司
+
+Xi'an Chaoye Yangchuang Information Technology Co., Ltd.
+
+
+## 开源协议
+
+Apache 2.0 
