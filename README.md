@@ -56,7 +56,24 @@ flowchart LR
 
 ## 技术栈
 
-（请填写：前端、后端、数据库、AI 模型/API、部署方式等）
+- **前端框架**：React 19
+- **构建工具**：Vite 7
+- **可视化图表**：d3.js + Recharts
+- **图标库**：lucide-react
+- **后端框架**：Express 5
+- **数据库 ORM**：Prisma 7（支持 PostgreSQL）
+- **数据库驱动**：postgres（直接连接）
+- **文件解析**：
+  - PDF：`pdf-parse`
+  - Word：`mammoth`
+  - Excel：`exceljs`
+  - Markdown：`markdown-it`
+- **流程图渲染**：Mermaid 11
+- **AI 集成**：OpenAI SDK 6
+- **任务队列**：BullMQ + Redis（ioredis）
+- **对象存储**：阿里云 OSS（`ali-oss`）
+- **文件上传**：multer
+- **工具库**：dotenv、cors、concurrently
 
 
 ## 快速开始
@@ -122,9 +139,9 @@ Prisma schema 定义在 prisma/schema.prisma，支持 PostgreSQL 生产环境。
 - **容器编排**：Docker Compose 集成 → PostgreSQL、Redis、API、Worker
 
 
-## 参与贡献
+## 设计公司
 
-（请填写：如何提 Issue、Fork、PR 流程，贡献方向）
+Xi'an Chaoye Yangchuang Information Technology Co., Ltd.
 
 
 ## 开源协议
