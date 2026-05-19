@@ -15,8 +15,7 @@
 
 ## 项目简介
 
- - 一款结合“组织沟通”与”知识沉淀”的平台,核心功能是把会议录音、文档、截图和业务资料等信息源自动编译成项目内 LLM Wiki，并自动生成待确认的需求、决策以及伴随的风险。根据后续项目进程也会不断生成待确
- - 认的需求变更。
+   一款结合“组织沟通”与”知识沉淀”的平台,核心功能是把会议录音、文档、截图和业务资料等信息源自动编译成项目内 LLM Wiki，并自动生成待确认的需求、决策以及伴随的风险。根据后续项目进程也会不断生成待确认的需求变更。
 <img width="958" height="507" alt="image" src="https://github.com/user-attachments/assets/fc1f186b-dd4f-4c67-81be-9eafbcd39066" />
 
 
@@ -57,22 +56,35 @@ flowchart LR
 ## 技术栈
 
 - **前端框架**：React 19
+ 
 - **构建工具**：Vite 7
+ 
 - **可视化图表**：d3.js + Recharts
+ 
 - **图标库**：lucide-react
+ 
 - **后端框架**：Express 5
+ 
 - **数据库 ORM**：Prisma 7（支持 PostgreSQL）
+ 
 - **数据库驱动**：postgres（直接连接）
+ 
 - **文件解析**：
+
   - PDF：`pdf-parse`
   - Word：`mammoth`
   - Excel：`exceljs`
   - Markdown：`markdown-it`
 - **流程图渲染**：Mermaid 11
+ 
 - **AI 集成**：OpenAI SDK 6
+ 
 - **任务队列**：BullMQ + Redis（ioredis）
+ 
 - **对象存储**：阿里云 OSS（`ali-oss`）
+ 
 - **文件上传**：multer
+ 
 - **工具库**：dotenv、cors、concurrently
 
 
