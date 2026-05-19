@@ -2,7 +2,7 @@
 
 ## catalogue
 - [Project Overview](#project_overview)
-- [核心功能](#核心功能)
+- [Core function](#Core_function)
 - [技术栈](#技术栈)
 - [快速开始](#快速开始)
 - [环境变量配置](#环境变量配置)
@@ -19,7 +19,7 @@
 <img width="958" height="507" alt="image" src="https://github.com/user-attachments/assets/fc1f186b-dd4f-4c67-81be-9eafbcd39066" />
 
 
-## 核心功能
+## Core function
 
 ```mermaid
 flowchart LR
