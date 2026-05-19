@@ -52,6 +52,14 @@ flowchart LR
 
 ## 快速开始
 
+<img width="172" height="70" alt="image" src="https://github.com/user-attachments/assets/c17e12f9-f62d-49ad-b1ea-ec54a4abc0d3" />
+前端：http://localhost:5173
+
+API：http://localhost:4000/api/health
+如需完整的 OpenAI 编译能力，请复制 .env.example 为 .env，填写 OPENAI_API_KEY。
+补充：未配置 Key 时，系统会使用本地启发式编译器跑通完整流程。
+
+
 ### 前提条件
 
 （请填写：需要安装 Docker / Node.js / 数据库等）
