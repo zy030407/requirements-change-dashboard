@@ -1,59 +1,59 @@
 # Notice from the Wooden Bell
 
 ## catalogue
-- [Project Overview](#project_overview)
-- [Core function](#Core_function)
-- [技术栈](#技术栈)
-- [快速开始](#快速开始)
-- [环境变量配置](#环境变量配置)
-- [数据库模型](#数据库模型)
-- [商业化部署底座](#商业化部署底座)
-- [验证](#验证)
-- [参与贡献](#参与贡献)
-- [开源协议](#开源协议)
+- [Project Overview](#project-overview)
+- [Core function](#Core-function)
+- [Technical stack](#Technical-stack)
+- [Quick Start](#quick-start)
+- [Environment Variable Configuration](#environment-variable-configuration)
+- [Database Model](#database-model)
+- [Commercial Deployment Base](#commercial-deployment-base)
+- [Verification](#verification)
+- [Contributing](#contributing)
+- [Open Source License](#open-source-license)
 
 
-## Project_Overview
+## Project-Overview
 
-   一款结合“组织沟通”与”知识沉淀”的平台,核心功能是把会议录音、文档、截图和业务资料等信息源自动编译成项目内 LLM Wiki，并自动生成待确认的需求、决策以及伴随的风险。根据后续项目进程也会不断生成待确认的需求变更。
+ A platform that integrates "organizational communication" and "knowledge accumulation", its core function is to automatically compile information sources such as meeting recordings, documents, screenshots, and business materials into an LLM Wiki within the project, and automatically generate requirements, decisions, and accompanying risks that need confirmation. Based on the subsequent project progress, requirements changes that need confirmation will also be continuously generated.
 <img width="958" height="507" alt="image" src="https://github.com/user-attachments/assets/fc1f186b-dd4f-4c67-81be-9eafbcd39066" />
 
 
-## Core function
+## Core-function
 
 ```mermaid
 flowchart LR
-    A[上传资料] --> B[自动解析]
-    B --> C[提取信息]
-    C --> D[AI生成待确认需求清单]
-    D --> E{人工确认}
-    E -->|确认| F[写入需求池]
-    E -->|修改| D
-    F --> G[需求历史版本]
-    G --> H[项目看板]
-    G --> I[项目Wiki]
-    G --> J[Markdown导出]
+    A[Upload Materials] --> B[Auto Parse]
+    B --> C[Extract Information]
+    C --> D[AI Generates Requirements List for Confirmation]
+    D --> E{Manual Confirmation}
+    E -->|Confirm| F[Write to Requirements Pool]
+    E -->|Modify| D
+    F --> G[Requirements Version History]
+    G --> H[Project Board]
+    G --> I[Project Wiki]
+    G --> J[Markdown Export]
     H --> K[(PostgreSQL)]
     I --> K
     J --> K
 ```
 
-- **资料上传**：支持文本、Markdown、PDF、Word、Excel、图片、音频等多种格式文件上传。
+- **Upload Materials**: Supports uploading files in various formats such as text, Markdown, PDF, Word, Excel, images, and audio.
 
-- **自动解析与更新**：上传资料后，系统自动分析内容，更新项目 Wiki 页面版本，并生成变更点、决策记录、风险提示、待确认事项。
+- **Automatic Parsing and Update**: After uploading materials, the system automatically analyzes the content, updates the project Wiki page version, and generates change points, decision records, risk alerts, and items pending confirmation.
 
-- **AI 辅助变更**：AI 只负责生成“待确认的变更项”；只有你手动确认后，这些变更才会正式写入当前需求池和需求历史版本。
+- **AI-Assisted Changes**: AI only generates "change items pending confirmation"; these changes are formally written into the current requirements pool and requirements history only after you manually confirm them.
 
-- **项目 Wiki 管理**：提供 Wiki 页面列表、详情查看、每个页面的来源资料数量、以及完整的版本记录。
+- **Project Wiki Management**: Provides a list of Wiki pages, detailed views, the number of source materials for each page, and complete version records.
 
-- **一键导出为 Markdown**：可一键生成 Obsidian 可直接打开的 `index.md`、`log.md`、`changes.md`、`sources.md` 文件，以及每个 Wiki 页面的独立 Markdown 文件。
+- **One-Click Export to Markdown**: Generates Obsidian-compatible files such as `index.md`, `log.md`, `changes.md`, `sources.md` with a single click, along with individual Markdown files for each Wiki page.
 
-- **项目看板**：所有看板数据（指标、趋势、状态、最近变更、来源资料）都来自后端，实时更新。
+- **Project Board**: All board data (metrics, trends, status, recent changes, source materials) comes from the backend and is updated in real time.
 
-- **生产级数据库模型**：使用 Prisma + PostgreSQL 定义并管理完整的数据结构，适合生产环境部署。
+- **Production-Grade Database Model**: Uses Prisma + PostgreSQL to define and manage a complete data structure, suitable for production deployment.
 
 
-## 技术栈
+## Technical-stack
 
 - **前端框架**：React 19
  
