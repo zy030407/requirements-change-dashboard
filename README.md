@@ -5,7 +5,7 @@
 - [Core function](#Core-function)
 - [Technical stack](#Technical-stack)
 - [Quick Start](#Quick-start)
-- [Environment Variable Configuration](#Environment-variable-configuration)
+- [Environment Variable Configuration](#Environment-Variable-Configuration)
 - [Database Model](#Database-model)
 - [Commercial Deployment Base](#Commercial-deployment-base)
 - [Verification](#Verification)
@@ -105,7 +105,7 @@ For complete OpenAI compilation capability, please copy .env.example to .env and
 Note：When no key is configured, the system will use the local heuristic compiler to run through the entire process.
 
 
-## Environment-variable-configuration
+## Environment-Variable-Configuration
 
 ### Development Environment
 
@@ -115,7 +115,7 @@ Copy .env.example to .env and configure at least
 OPENAI_API_KEY=your key
 ```
 
-### 生产环境
+### Production environment
 
 ```bash
 NODE_ENV=production
@@ -130,26 +130,26 @@ ALI_OSS_ACCESS_KEY_ID=...
 ALI_OSS_ACCESS_KEY_SECRET=...
 ```
 
-OSS Bucket 应设置为私有读写；前端预览和下载通过后端鉴权后生成短期签名 URL。
+OSS Bucket should be set to private read and write. Front-end preview and download through back-end authentication after generating a short-term signature URL.
 
 
 ## Database-model
 
-Prisma schema 定义在 prisma/schema.prisma，支持 PostgreSQL 生产环境。
+Prisma schema is defined in prisma/schema.prisma and supports PostgreSQL production.
 
-本地开发可使用 JSON 模式：npm run migrate:json
+For local development use the JSON schema: npm run migrate:json
 
 
 ## Commercial-deployment-base
 
-当前代码保留本地 JSON 开发模式，同时已加入生产化边界：
+The current code remains in native JSON development mode, but has added production boundaries:
 
-- **数据库**：PostgreSQL schema → `prisma/schema.prisma`
-- **本地开发备选**：JSON 迁移脚本 → `npm run migrate:json`
-- **对象存储**：阿里云 OSS 抽象 → `STORAGE_PROVIDER=oss`
-- **异步队列**：BullMQ + Redis → `JOB_QUEUE_PROVIDER=bullmq`
-- **进程拆分**：API 与 Worker 分离 → `npm start` 与 `npm run start:worker`
-- **容器编排**：Docker Compose 集成 → PostgreSQL、Redis、API、Worker
+- **Database**：PostgreSQL schema → `prisma/schema.prisma`
+- **Develop alternatives locally**：JSON migration script → `npm run migrate:json`
+- **Object storage**：Ali Cloud OSS abstraction → `STORAGE_PROVIDER=oss`
+- **Asynchronous queue**：BullMQ + Redis → `JOB_QUEUE_PROVIDER=bullmq`
+- **Process splitting**：API is separated from Worker → `npm start` and `npm run start:worker`
+- **Container orchestration**：Docker Compose integration → PostgreSQL、Redis、API、Worker
 
 
 ## Verification
