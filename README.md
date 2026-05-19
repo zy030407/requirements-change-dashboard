@@ -96,20 +96,20 @@ npm install
 npm run dev
 ```
 
-- **前端**：http://localhost:5173
+- **Frontend**：http://localhost:5173
 
 - **API**：http://localhost:4000/api/health
 
-如需完整的 OpenAI 编译能力，请复制 .env.example 为 .env，填写 OPENAI_API_KEY。
+For complete OpenAI compilation capability, please copy .env.example to .env and fill in OPENAI_API_KEY。
 
-补充：未配置 Key 时，系统会使用本地启发式编译器跑通完整流程。
+Note：When no key is configured, the system will use the local heuristic compiler to run through the entire process.
 
 
 ## Environment-variable-configuration
 
-### 开发环境
+### Development Environment
 
-复制 .env.example 为 .env，至少配置
+Copy .env.example to .env and configure at least
 
 ```bash
 OPENAI_API_KEY=your key
@@ -152,17 +152,7 @@ Prisma schema 定义在 prisma/schema.prisma，支持 PostgreSQL 生产环境。
 - **容器编排**：Docker Compose 集成 → PostgreSQL、Redis、API、Worker
 
 
-## Principal company
-
-Xi'an Chaoye Yangchuang Information Technology Co., Ltd.
-
-
-## 开源协议
-
-Apache 2.0 
-
-
-## 验证
+## Verification
 
 ```bash
 npm run build
@@ -170,3 +160,13 @@ npm run prisma:validate
 npm run dev:server
 npm run smoke
 ```
+
+
+## Contributing
+
+Xi'an Chaoye Yangchuang Information Technology Co., Ltd.
+
+
+## Open-source-license
+
+Apache 2.0 
