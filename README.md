@@ -4,13 +4,13 @@
 - [Project Overview](#project-overview)
 - [Core function](#Core-function)
 - [Technical stack](#Technical-stack)
-- [Quick Start](#quick-start)
-- [Environment Variable Configuration](#environment-variable-configuration)
-- [Database Model](#database-model)
-- [Commercial Deployment Base](#commercial-deployment-base)
-- [Verification](#verification)
-- [Contributing](#contributing)
-- [Open Source License](#open-source-license)
+- [Quick Start](#Quick-start)
+- [Environment Variable Configuration](#Environment-variable-configuration)
+- [Database Model](#Database-model)
+- [Commercial Deployment Base](#Commercial-deployment-base)
+- [Verification](#Verification)
+- [Contributing](#Contributing)
+- [Open Source License](#Open-source-license)
 
 
 ## Project-Overview
@@ -76,20 +76,20 @@ flowchart LR
   - Excel：`exceljs`
   - Markdown：`markdown-it`
 
-- **流程图渲染**：Mermaid 11
- 
-- **AI 集成**：OpenAI SDK 6
- 
-- **任务队列**：BullMQ + Redis（ioredis）
- 
-- **对象存储**：阿里云 OSS（`ali-oss`）
- 
-- **文件上传**：multer
- 
-- **工具库**：dotenv、cors、concurrently
+- **Flowchart Rendering**：Mermaid 11
+
+- **AI Integration**：OpenAI SDK 6
+
+- **Task Queue**：BullMQ + Redis（ioredis）
+
+- **Object Storage**：Alibaba Cloud OSS（`ali-oss`）
+
+- **File Upload**：multer
+
+- **Utility Libraries**：dotenv、cors、concurrently
 
 
-## 快速开始
+## Quick-start
 
 ```bash
 npm install
@@ -105,7 +105,7 @@ npm run dev
 补充：未配置 Key 时，系统会使用本地启发式编译器跑通完整流程。
 
 
-## 环境变量设置
+## Environment-variable-configuration
 
 ### 开发环境
 
@@ -133,14 +133,14 @@ ALI_OSS_ACCESS_KEY_SECRET=...
 OSS Bucket 应设置为私有读写；前端预览和下载通过后端鉴权后生成短期签名 URL。
 
 
-## 数据库模型
+## Database-model
 
 Prisma schema 定义在 prisma/schema.prisma，支持 PostgreSQL 生产环境。
 
 本地开发可使用 JSON 模式：npm run migrate:json
 
 
-## 商业化部署底座
+## Commercial-deployment-base
 
 当前代码保留本地 JSON 开发模式，同时已加入生产化边界：
 
@@ -152,7 +152,7 @@ Prisma schema 定义在 prisma/schema.prisma，支持 PostgreSQL 生产环境。
 - **容器编排**：Docker Compose 集成 → PostgreSQL、Redis、API、Worker
 
 
-## 设计公司
+## Principal company
 
 Xi'an Chaoye Yangchuang Information Technology Co., Ltd.
 
