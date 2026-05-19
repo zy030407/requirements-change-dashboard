@@ -55,26 +55,27 @@ flowchart LR
 
 ## Technical-stack
 
-- **前端框架**：React 19
+- **Frontend Framework**：React 19
  
-- **构建工具**：Vite 7
+- **Build Tool**：Vite 7
  
-- **可视化图表**：d3.js + Recharts
+- **Visualization Charts**：d3.js + Recharts
  
-- **图标库**：lucide-react
+- **Icon Library**：lucide-react
  
-- **后端框架**：Express 5
+- **Backend Framework**：Express 5
  
-- **数据库 ORM**：Prisma 7（支持 PostgreSQL）
+- **Database ORM**：Prisma 7（supports PostgreSQL）
  
-- **数据库驱动**：postgres（直接连接）
+- **Database Driver**：postgres（direct connection）
  
-- **文件解析**：
+- **File Parsing**：
 
   - PDF：`pdf-parse`
   - Word：`mammoth`
   - Excel：`exceljs`
   - Markdown：`markdown-it`
+
 - **流程图渲染**：Mermaid 11
  
 - **AI 集成**：OpenAI SDK 6
