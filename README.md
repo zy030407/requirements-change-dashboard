@@ -99,33 +99,29 @@ ALI_OSS_ACCESS_KEY_ID=...
 ALI_OSS_ACCESS_KEY_SECRET=...
 ```
 
-### 使用 Docker 部署
-
-（请填写：docker-compose 命令、访问地址）
-
-### 本地开发运行
-
-（请填写：git clone、安装依赖、配置 env、运行命令等）
-
-## 环境变量配置
-
-（请填写：`DATABASE_URL`、`OPENAI_API_KEY` 等示例）
+OSS Bucket 应设置为私有读写；前端预览和下载通过后端鉴权后生成短期签名 URL。
 
 ## 数据库模型
 
-（请填写：Prisma 主要模型说明，如 Conversation、Requirement 的字段）
+Prisma schema 定义在 prisma/schema.prisma，支持 PostgreSQL 生产环境。
 
-## 使用指南
+本地开发可使用 JSON 模式：npm run migrate:json
 
-（请填写：上传沟通记录 → 点击生成 → 输出待确认需求清单 → 人工编辑导出 的步骤，可配图说明）
+商业化部署底座
 
-## AI 提示词策略
+当前代码保留本地 JSON 开发模式，同时已加入生产化边界：
 
-（请填写：提示词设计思路、输出 JSON Schema 示例、如何处理冲突和模糊点）
+PostgreSQL schema：prisma/schema.prisma
 
-## 项目文件结构
+JSON 迁移脚本：npm run migrate:json
 
-（请填写：关键目录与文件的作用，如 `server/`、`src/`、`prisma/` 等）
+阿里云 OSS 存储抽象：STORAGE_PROVIDER=oss
+
+BullMQ/Redis 异步任务队列：JOB_QUEUE_PROVIDER=bullmq
+
+API/Worker 拆分：npm start 与 npm run start:worker
+
+Docker Compose：PostgreSQL、Redis、API、Worker
 
 ## 参与贡献
 
