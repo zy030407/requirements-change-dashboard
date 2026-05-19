@@ -66,9 +66,30 @@ npm run dev
 补充：未配置 Key 时，系统会使用本地启发式编译器跑通完整流程。
 
 
-### 前提条件
+### 环境变量设置
 
-（请填写：需要安装 Docker / Node.js / 数据库等）
+##开发环境
+
+复制 .env.example 为 .env，至少配置
+
+```bash
+OPENAI_API_KEY=your key
+```
+
+#生产环境
+
+```bash
+NODE_ENV=production
+SESSION_SECRET=足够长的随机字符串
+DATABASE_URL=postgresql://...
+REDIS_URL=redis://...
+JOB_QUEUE_PROVIDER=bullmq
+STORAGE_PROVIDER=oss
+ALI_OSS_REGION=oss-cn-hangzhou
+ALI_OSS_BUCKET=你的私有 Bucket
+ALI_OSS_ACCESS_KEY_ID=...
+ALI_OSS_ACCESS_KEY_SECRET=...
+```
 
 ### 使用 Docker 部署
 
