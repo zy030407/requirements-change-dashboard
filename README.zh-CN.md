@@ -1,3 +1,7 @@
+## 语言
+- [中文](README.zh-CN.md)
+- [English](README.md)
+
 # 木铎知会
 
 ## 目录
