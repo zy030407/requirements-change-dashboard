@@ -53,6 +53,7 @@ flowchart LR
 ## 快速开始
 
 npm install
+
 npm run dev
 
 - **前端**：http://localhost:5173
